@@ -49,22 +49,26 @@ type
     btn2: TButton;
     btn3: TButton;
     pnl2: TPanel;
-    lbl11: TLabel;
-    lbl15: TLabel;
-    edtDevdFiltro: TEdit;
     pbDev: TProgressBar;
-    mmoDevResultado: TMemo;
-    btnDevCarregarURL: TButton;
     btnDevCarregarRelatorio: TButton;
-    mmoDevURL: TMemo;
-    mmoDevLog: TMemo;
     pnl4: TPanel;
-    lbl16: TLabel;
-    btnDevCarregarEmails: TButton;
     pnl3: TPanel;
     lstDevDesenvi: TListBox;
     lblDevDesenvolvimento: TLabel;
     chk1: TCheckBox;
+    mmoDevURL: TMemo;
+    btnDevCarregarURL: TButton;
+    edtDevdFiltro: TEdit;
+    lbl11: TLabel;
+    lbl15: TLabel;
+    btnDevCarregarEmails: TButton;
+    lstQualidade: TListBox;
+    btn4: TButton;
+    btn5: TButton;
+    lbl12: TLabel;
+    btn6: TButton;
+    mmoDevResultado: TMemo;
+    mmoDevLog: TMemo;
     procedure btn1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtDiasExit(Sender: TObject);
@@ -77,6 +81,9 @@ type
     procedure btn3Click(Sender: TObject);
     procedure btnDevCarregarEmailsClick(Sender: TObject);
     procedure btnDevCarregarRelatorioClick(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
+    procedure btn6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -271,7 +278,7 @@ begin
     edtP3_Tempo.Text := '';
     edtP3_qtd.Text := '';
 
-    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:51513703@Ss');
+    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:');
     if edt1_url.Text = '' then
       Exit;
 
@@ -597,7 +604,7 @@ begin
     pb1_progress.Position := 1;
     pb1_progress.Show;
 
-    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:51513703@Ss');
+    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:');
     sres := RESTClient.Get(PChar('https://jira.linx.com.br/rest/api/2/filter/'+edt1_relatorio.Text));
 
     pb1_progress.Position := 2;
@@ -637,7 +644,7 @@ begin
     pbDev.Position := 1;
     pbDev.Show;
 
-    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:51513703@Ss');
+    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:');
     sres := RESTClient.Get(PChar('https://jira.linx.com.br/rest/api/2/filter/'+edtDevdFiltro.Text));
 
     pbDev.Position := 2;
@@ -668,6 +675,48 @@ begin
   chkP3.Checked := False;
   lbl4_relatorio.Caption := '';
 
+end;
+
+procedure TForm1.btn4Click(Sender: TObject);
+var z:integer;
+begin
+  for z := 0 to lstDevDesenvi.Items.Count - 1 do
+  begin
+    if (lstDevDesenvi.Selected[z]) then
+    begin
+      lstQualidade.Items.Add(lstDevDesenvi.Items[z]);
+      lstDevDesenvi.DeleteSelected;
+      Break;
+    end;
+  end;
+end;
+
+procedure TForm1.btn5Click(Sender: TObject);
+var z:integer;
+begin
+  for z := 0 to lstQualidade.Items.Count - 1 do
+  begin
+    if (lstQualidade.Selected[z]) then
+    begin
+      lstDevDesenvi.Items.Add(lstQualidade.Items[z]);
+      lstQualidade.DeleteSelected;
+      Break;
+    end;
+  end;
+end;
+
+procedure TForm1.btn6Click(Sender: TObject);
+begin
+  if mmoDevLog.Visible then
+  begin
+    mmoDevLog.Visible := False;
+    btn6.Caption := 'Exibir Log'
+  end
+  else
+  begin
+    mmoDevLog.Visible := True;
+    btn6.Caption := 'Fechar Log'
+  end;
 end;
 
 procedure TForm1.edtDiasExit(Sender: TObject);
@@ -704,10 +753,16 @@ var RESTClient: TRESTClient;
     url:string;
 
 begin
+  if ((lstDevDesenvi.Items.Count>0) or (lstQualidade.Items.Count>0) )and  
+     (MessageDlg('Existe e-mail já carregados'#13#10'Deseja carregar novamente?', mtConfirmation, [mbNo,mbYes],0) = mrNo) then
+  begin
+    Exit;
+  end;
+
   RESTClient := TRESTClient.Create('');
   try
 
-    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:51513703@Ss');
+    RESTClient.Headers := 'Authorization: Basic '+encoderBase64('rodrigo.porcari:');
     if mmoDevURL.Text = '' then
       Exit;
 
@@ -726,6 +781,7 @@ begin
         mmoDevLog.Text := mmoDevLog.Text+url+#13#10;
         sres := RESTClient.Get(url);
         mmoDevLog.Text := mmoDevLog.Text+sres+#13#10;
+        mmoDevLog.Text := mmoDevLog.Text+'__________________________________'+#13#10;
         jarr := ParseJSON(PChar(AnsiString(utf8.UTF8ToString(sres))));
         try
           if pbDev.Max = 0 then          

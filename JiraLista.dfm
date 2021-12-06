@@ -4,8 +4,8 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Form1'
-  ClientHeight = 645
-  ClientWidth = 956
+  ClientHeight = 656
+  ClientWidth = 1194
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,182 +20,246 @@ object Form1: TForm1
   object pgc1: TPageControl
     Left = 0
     Top = 0
-    Width = 956
-    Height = 645
+    Width = 1194
+    Height = 656
     ActivePage = ts1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 957
-    ExplicitHeight = 618
     object ts1: TTabSheet
       Caption = 'Tempo dos programadores'
-      ExplicitWidth = 949
-      ExplicitHeight = 590
       object pnl2: TPanel
         Left = 0
         Top = 0
-        Width = 948
-        Height = 617
+        Width = 1186
+        Height = 628
         Align = alClient
         Color = clSilver
         ParentBackground = False
         TabOrder = 0
-        object lbl11: TLabel
-          Left = 53
-          Top = 19
-          Width = 61
-          Height = 13
-          Caption = 'ID Relat'#243'rio:'
-        end
-        object lbl15: TLabel
-          Left = 53
-          Top = 38
-          Width = 23
-          Height = 13
-          Caption = 'URL:'
-        end
         object pnl3: TPanel
-          Left = 0
-          Top = 0
-          Width = 953
-          Height = 287
+          Left = 1
+          Top = 1
+          Width = 1184
+          Height = 338
+          Align = alTop
           BiDiMode = bdRightToLeft
-          Caption = 'pnl3'
           ParentBiDiMode = False
-          TabOrder = 9
+          TabOrder = 3
           VerticalAlignment = taAlignTop
           object lblDevDesenvolvimento: TLabel
-            Left = 57
-            Top = 136
+            Left = 208
+            Top = 104
             Width = 96
             Height = 13
             Caption = 'DESENVOLVIMENTO'
           end
+          object lbl11: TLabel
+            Left = 17
+            Top = 19
+            Width = 57
+            Height = 13
+            Caption = 'ID Relat'#243'rio'
+          end
+          object lbl15: TLabel
+            Left = 208
+            Top = 19
+            Width = 50
+            Height = 13
+            Caption = 'Express'#227'o'
+          end
+          object lbl12: TLabel
+            Left = 758
+            Top = 104
+            Width = 58
+            Height = 13
+            Caption = 'QUALIDADE'
+          end
           object lstDevDesenvi: TListBox
-            Left = 53
-            Top = 155
-            Width = 244
-            Height = 97
+            Left = 67
+            Top = 123
+            Width = 385
+            Height = 198
             BiDiMode = bdLeftToRight
             ItemHeight = 13
-            MultiSelect = True
             ParentBiDiMode = False
             TabOrder = 0
           end
           object chk1: TCheckBox
-            Left = 303
-            Top = 155
+            Left = 1040
+            Top = 233
             Width = 121
             Height = 25
             Caption = 'Agrupar por E-mail'
             TabOrder = 1
           end
-        end
-        object pnl4: TPanel
-          Left = 0
-          Top = 293
-          Width = 953
-          Height = 330
-          TabOrder = 7
-          VerticalAlignment = taAlignBottom
-          object lbl16: TLabel
-            Left = 53
-            Top = 266
-            Width = 59
-            Height = 13
-            Caption = 'RESULTADO'
+          object mmoDevURL: TMemo
+            Left = 264
+            Top = 16
+            Width = 753
+            Height = 64
+            BiDiMode = bdRightToLeftNoAlign
+            Lines.Strings = (
+              'project = MILLEN AND issuetype = Bug AND resolved >= -3d')
+            ParentBiDiMode = False
+            ScrollBars = ssVertical
+            TabOrder = 2
+          end
+          object btnDevCarregarURL: TButton
+            Left = 1040
+            Top = 19
+            Width = 121
+            Height = 37
+            Caption = 'Carregar express'#227'o'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+            OnClick = btnDevCarregarURLClick
+          end
+          object edtDevdFiltro: TEdit
+            Left = 80
+            Top = 16
+            Width = 122
+            Height = 21
+            BiDiMode = bdLeftToRight
+            ParentBiDiMode = False
+            TabOrder = 4
+            Text = '27060'
+          end
+          object btnDevCarregarEmails: TButton
+            Left = 1040
+            Top = 270
+            Width = 121
+            Height = 37
+            Caption = 'Carregar E-mails'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 5
+            OnClick = btnDevCarregarEmailsClick
+          end
+          object lstQualidade: TListBox
+            Left = 592
+            Top = 123
+            Width = 385
+            Height = 198
+            BiDiMode = bdLeftToRight
+            ItemHeight = 13
+            ParentBiDiMode = False
+            TabOrder = 6
+          end
+          object btn4: TButton
+            Left = 488
+            Top = 179
+            Width = 75
+            Height = 25
+            Caption = '<<'
+            TabOrder = 7
+            OnClick = btn4Click
+          end
+          object btn5: TButton
+            Left = 488
+            Top = 233
+            Width = 75
+            Height = 25
+            Caption = '>>'
+            TabOrder = 8
+            OnClick = btn5Click
           end
         end
-        object edtDevdFiltro: TEdit
-          Left = 120
-          Top = 16
-          Width = 54
-          Height = 21
-          TabOrder = 0
-          Text = '27060'
+        object pnl4: TPanel
+          Left = 1
+          Top = 352
+          Width = 1184
+          Height = 275
+          Align = alBottom
+          TabOrder = 2
+          VerticalAlignment = taAlignBottom
+          object mmoDevResultado: TMemo
+            Left = 67
+            Top = 16
+            Width = 910
+            Height = 224
+            Lines.Strings = (
+              '')
+            ScrollBars = ssVertical
+            TabOrder = 0
+          end
+          object mmoDevLog: TMemo
+            Left = 1040
+            Top = 16
+            Width = 121
+            Height = 121
+            Color = clScrollBar
+            Lines.Strings = (
+              '')
+            TabOrder = 1
+            Visible = False
+          end
         end
         object pbDev: TProgressBar
-          Left = 168
-          Top = 582
-          Width = 705
-          Height = 25
-          TabOrder = 1
-        end
-        object mmoDevResultado: TMemo
           Left = 53
-          Top = 331
-          Width = 820
-          Height = 222
-          Lines.Strings = (
-            '')
-          ScrollBars = ssVertical
-          TabOrder = 2
-        end
-        object btnDevCarregarURL: TButton
-          Left = 180
-          Top = 14
-          Width = 162
+          Top = 598
+          Width = 925
           Height = 25
-          Caption = 'Carregar express'#227'o do filtro'
-          TabOrder = 3
-          OnClick = btnDevCarregarURLClick
+          TabOrder = 0
         end
         object btnDevCarregarRelatorio: TButton
-          Left = 53
-          Top = 578
-          Width = 96
-          Height = 25
+          Left = 1041
+          Top = 582
+          Width = 121
+          Height = 43
           Caption = 'CARREGAR DADOS'
-          TabOrder = 4
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 1
           OnClick = btnDevCarregarRelatorioClick
         end
-        object mmoDevURL: TMemo
-          Left = 53
-          Top = 57
-          Width = 820
-          Height = 64
-          Lines.Strings = (
-            'project = MILLEN AND issuetype = Bug AND resolved >= -3d')
-          ScrollBars = ssVertical
-          TabOrder = 5
-        end
-        object mmoDevLog: TMemo
-          Left = 893
-          Top = 568
-          Width = 52
-          Height = 44
-          Color = clScrollBar
-          Lines.Strings = (
-            '')
-          TabOrder = 6
-        end
-        object btnDevCarregarEmails: TButton
-          Left = 49
-          Top = 258
-          Width = 71
-          Height = 25
-          Caption = 'Listar E-mail'
-          TabOrder = 8
-          OnClick = btnDevCarregarEmailsClick
+        object btn6: TButton
+          Left = 1041
+          Top = 519
+          Width = 121
+          Height = 43
+          Caption = 'Exibir Log'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 4
+          OnClick = btn6Click
         end
       end
     end
     object ts2: TTabSheet
       Caption = 'Tempo por prioridade'
       ImageIndex = 1
-      ExplicitWidth = 949
-      ExplicitHeight = 590
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1464
+      ExplicitHeight = 617
       object pnl1: TPanel
         Left = 0
         Top = 0
-        Width = 948
-        Height = 617
+        Width = 1186
+        Height = 628
         Align = alClient
         Color = clSilver
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 949
-        ExplicitHeight = 590
+        ExplicitWidth = 1464
+        ExplicitHeight = 617
         object lbl1: TLabel
           Left = 24
           Top = 19

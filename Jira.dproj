@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-    <DCC_DependencyCheckOutputName>C:\Users\Asus\Desktop\Jira.exe</DCC_DependencyCheckOutputName>
+    <DCC_DependencyCheckOutputName>C:\Users\Asus\Desktop\lixo\Jira.exe</DCC_DependencyCheckOutputName>
     <MainSource>Jira.dpr</MainSource>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -17,7 +17,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Version>7.0</Version>
-    <DCC_ExeOutput>C:\Users\Asus\Desktop</DCC_ExeOutput>
+    <DCC_ExeOutput>C:\Users\Asus\Desktop\lixo</DCC_ExeOutput>
     <DCC_Define>DEBUG</DCC_Define>
     <DCC_UnitSearchPath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;$(BDS)\RaveReports\Lib;Z:\modules\millenium_eco\services-dll;Z:\WDTS\server\common;Z:\WDTS\client\common;Z:\millenium\Paginas;Z:\indy\Source;Z:\modules\millenium_gnre\services-dll</DCC_UnitSearchPath>
     <DCC_ResourcePath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;$(BDS)\RaveReports\Lib;Z:\modules\millenium_eco\services-dll;Z:\WDTS\server\common;Z:\WDTS\client\common;Z:\millenium\Paginas;Z:\indy\Source;Z:\modules\millenium_gnre\services-dll</DCC_ResourcePath>
